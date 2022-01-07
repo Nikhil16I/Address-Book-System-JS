@@ -28,7 +28,7 @@ function contactDetails(firstName, lastName, address, state, city, zipCode, emai
     addressBook.filter(contact => contact.firstName == firstName)
         .reduce(() => count++, count = 0);
     if (count > 0) {
-        console.log("Contact With Name has a duplicate contact & " + firstName + " Already Present")
+        console.log("Contact With Name has a duplicate contact " + firstName + " is already present")
     } else {
         const firstNamePattern = /^[A-Z][a-zA-Z]{3,}/;
         let firstName_Check = firstNamePattern.test(firstName);
@@ -57,7 +57,7 @@ function contactDetails(firstName, lastName, address, state, city, zipCode, emai
         if (firstName_Check == true && lastName_Check == true && address_Check == true && state_Check == true && city_Check == true
             && zipCode_Check == true && email_Check == true && phoneNumber_Check == true) {
             let newCotact = new Contact(firstName, lastName, address, state, city, zipCode, email, phoneNumber);
-            console.log("Contact Added Successfully");
+            console.log("Contact Added to the Addressbook .");
             console.log(newCotact);
         } else {
             throw 'Contact Details Are Invalid ! please check details';
@@ -119,27 +119,27 @@ function searchByCity_State(choice , name){
 function viewByCityOrState(choice , name){
     if(choice == "city"){
         person = addressBook.filter(contact => contact.city == name)
-        console.log("Contact Found Who Is From "+name);
+        console.log("Contact Founded named As "+name);
         console.log(person);
     }else if(choice == "state"){
         person = addressBook.filter(contact => contact.state == name)
-        console.log("Contact Found Who Is From "+name);
+        console.log("Contact Founded named As "+name);
         console.log(person);
     }else{
-        console.log("Provide Right City or State Name");
+        console.log("Please Input Correct City or State Name");
     }
 }
 function countContactInCity_State(choice , name){
     if(choice == "city"){
         person = addressBook.filter(contact => contact.city == name)
         .reduce(() => { count++;},count = 0);
-        console.log("Total Number Of Contact Found Who Is From "+name+" Are " +count);
+        console.log("the total Number Of Contact named as "+name+" are in count of " +count);
     }else if(choice == "state"){
         person = addressBook.filter(contact => contact.state == name)
         .reduce(() => { count++;},count = 0);
-        console.log("Total Number Of Contact Found Who Is From "+name+" Are " +count);
+        console.log("the total Number Of Contact named as "+name+" are in count of " +count);
     }else{
-        console.log("Provide Right City or State Name");
+        console.log("Please Input Correct City or State Name");
     }
 }
 
@@ -156,11 +156,32 @@ function countContactInCity_State(choice , name){
         }
     }
     /*Sorting Contact*/
-    function sortContact(){
+    function sortContact(choice){
         console.log(addressBook.sort((newContact1,newContact2) => {
-            if(newContact1.firstName < newContact2.firstName){
+            switch(choice){
+                case "firstName":
+                    one = newContact1.firstName;
+                    two = newContact2.firstName;
+                    break;
+                case "city":
+                    one = newContact1.city;
+                    two = newContact2.city;
+                    break;
+                case  "state":
+                    one = newContact1.state;
+                    two = newContact2.state;
+                    break;
+                case "zipCode":
+                    one = newContact1.zipCode;
+                    two = newContact2.zipCode;
+                    break;
+                default:
+                    console.log("Please input Valid firstName or city or state or zipCode")
+            }
+       
+            if(one < two){
                 return -1;
-            }else if(newContact1.firstName == newContact2.firstName){
+            }else if(one == two){
                 return 0;
             }else{
                 return 1;
@@ -199,8 +220,7 @@ function countContactInCity_State(choice , name){
         console.log("\nTotal Contacts In Address Book Are: " + count + "\n");
     }
 
-    /*selecting a function from function*/
-
+    /*Calling  function from function*/
     selectFunction("contactDetails");
     selectFunction("countContact");
     selectFunction("editContact");
