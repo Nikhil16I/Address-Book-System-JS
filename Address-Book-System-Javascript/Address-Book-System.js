@@ -89,9 +89,40 @@ function editContact(findName,editedVariable,variableNewValue){
         }
     })
 }
+function deleteContact(first_Name){
+    if(addressBook.length == null){
+        console.log("Contact Added In Address Book");
+    }else{
+        for(let i = 0; i <addressBook.length ; i++){
+            if(addressBook[i].firstName == first_Name){
+                addressBook.splice(i,1);
+                console.log("Contact Deleted from Addressbook");
+            }
+        }
+    }
+}
 
-contactDetails("Nikhil","Patil","Nagpur","Maharashtra","Nagpur","444444","nikhil@gmail.com","91 1234567890");
-
-/*Editing Contact In Address Book*/
-editContact("Nikhil","City","Nagpur");
-console.log(addressBook);
+function selectFunction(select){
+    switch(select){
+        case "contactDetails":
+                //Calling Contact Details Fucntion
+                contactDetails("Nikhil","Patil","Nagpur","Maharashtra","Nagpur","444444","nikhil@gmail.com","91 1234567890");
+                contactDetails("Adesh","Jain","Aurangabad","Maharashtra","Aurangabad","444444","adijain@gmail.com","91 1098755454");
+                console.log(addressBook);
+                break;
+        case "editContact":
+                //Calling Edit Contact Function
+                editContact("Nikihl","City","Nagpur");
+                console.log(addressBook);
+                break;
+        case "deleteContact":
+                //Calling Delete Contact Function
+                deleteContact("Adesh");
+                console.log(addressBook);
+                break;
+    }
+}
+/*selecting a function from function*/
+selectFunction("contactDetails");
+selectFunction("editContact");
+selectFunction("deleteContact")
