@@ -155,7 +155,18 @@ function countContactInCity_State(choice , name){
             }
         }
     }
-
+    /*Sorting Contact*/
+    function sortContact(){
+        console.log(addressBook.sort((newContact1,newContact2) => {
+            if(newContact1.firstName < newContact2.firstName){
+                return -1;
+            }else if(newContact1.firstName == newContact2.firstName){
+                return 0;
+            }else{
+                return 1;
+            }
+        }));
+    }
     function selectFunction(select) {
         switch (select) {
             case "contactDetails":
@@ -198,4 +209,6 @@ function countContactInCity_State(choice , name){
     selectFunction("searchByCity_State");
     selectFunction("viewByCityOrState");
     selectFunction("countContactInCity_State");
+    selectFunction("sortContact");
+
 
