@@ -57,6 +57,9 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
         }
 }
 /*Function to edit Contact*/
+
+var addressBook = new Array();
+
 function editContact(findName,editedVariable,variableNewValue){
     addressBook.forEach(newContact => {
         if(newContact.firstName == findName){
@@ -122,7 +125,16 @@ function selectFunction(select){
                 break;
     }
 }
+function countContact(){
+    addressBook.reduce(() => {
+        count++;
+    },count = 0);
+    console.log("\nTotal Contacts In Address Book Are: "+count + "\n");
+}
 /*selecting a function from function*/
+
 selectFunction("contactDetails");
+selectFunction("countContact");
 selectFunction("editContact");
-selectFunction("deleteContact")
+selectFunction("deleteContact");
+selectFunction("countContact");
