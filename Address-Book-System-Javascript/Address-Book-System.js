@@ -100,6 +100,22 @@ function contactDetails(firstName, lastName, address, state, city, zipCode, emai
             }
         })
     }
+    
+function searchByCity_State(choice , name){
+    if(choice == "city"){
+        person = addressBook.filter(contact => contact.city == name)
+        .map(contact => contact.firstName);
+        console.log("Contact Founded named As "+name);
+        console.log(person);
+    }else if(choice == "state"){
+        person = addressBook.filter(contact => contact.state == name)
+        .map(contact => contact.firstName);
+        console.log("Contact Founded named As "+name);
+        console.log(person);
+    }else{
+        console.log("Please Input Correct City or State Name");
+    }
+}
     function deleteContact(first_Name) {
         if (addressBook.length == null) {
             console.log("Contact Added In Address Book");
@@ -152,3 +168,4 @@ function contactDetails(firstName, lastName, address, state, city, zipCode, emai
     selectFunction("editContact");
     selectFunction("deleteContact");
     selectFunction("countContact");
+    selectFunction("searchByCity_State");
