@@ -116,6 +116,19 @@ function searchByCity_State(choice , name){
         console.log("Please Input Correct City or State Name");
     }
 }
+function viewByCityOrState(choice , name){
+    if(choice == "city"){
+        person = addressBook.filter(contact => contact.city == name)
+        console.log("Contact Found Who Is From "+name);
+        console.log(person);
+    }else if(choice == "state"){
+        person = addressBook.filter(contact => contact.state == name)
+        console.log("Contact Found Who Is From "+name);
+        console.log(person);
+    }else{
+        console.log("Provide Right City or State Name");
+    }
+}
     function deleteContact(first_Name) {
         if (addressBook.length == null) {
             console.log("Contact Added In Address Book");
@@ -169,3 +182,4 @@ function searchByCity_State(choice , name){
     selectFunction("deleteContact");
     selectFunction("countContact");
     selectFunction("searchByCity_State");
+    selectFunction("viewByCityOrState");
