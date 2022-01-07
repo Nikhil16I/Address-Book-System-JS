@@ -53,13 +53,45 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
             console.log("Contact Added Successfully");
             console.log(newCotact);
         }else{
-            throw 'Contact Details Are Invalid';
+            throw 'Contact Details Are Invalid ! please check details';
         }
+}
+/*Function to edit Contact*/
+function editContact(findName,editedVariable,variableNewValue){
+    addressBook.forEach(newContact => {
+        if(newContact.firstName == findName){
+            switch(editedVariable){
+                case "firstName":
+                    newContact.firstName = variableNewValue;
+                    break;
+                case "lastName":
+                    newContact.lastName = variableNewValue;
+                    break;
+                case "address":
+                    newContact.address = variableNewValue;
+                    break;
+                case "state":
+                    newContact.state = variableNewValue;
+                    break;
+                case "city":
+                    newContact.city = variableNewValue;
+                    break;
+                case "zipCode":
+                    newContact.zipCode = variableNewValue;
+                    break;  
+                case "firstName":
+                    newContact.firstName = variableNewValue;
+                    break;
+                case "lastName":
+                    newContact.lastName = variableNewValue;
+                    break;      
+            }
+        }
+    })
 }
 
 contactDetails("Nikhil","Patil","Nagpur","Maharashtra","Nagpur","444444","nikhil@gmail.com","91 1234567890");
 
-/*Displaying Contact In Address Book*/
-for(let i = 0 ; i < addressBook.length ; i++){
-    console.log(addressBook[i]);
-}
+/*Editing Contact In Address Book*/
+editContact("Nikhil","City","Nagpur");
+console.log(addressBook);
