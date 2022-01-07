@@ -1,63 +1,65 @@
 //Adding Attribute For Contacts
 class Contact{ 
-    firstname
-    lastname
+    firstName
+    lastName
     address
     state
     city
-    zipcode
+    zipCode
     email
-    phonenumber
+    phoneNumber
 //Constructor to initialize variables
-    constructor(firstname,lastname,address,state,city,zipcode,email,phonenumber){
-        this.firstname=firstname
-        this.lastname=lastname
+    constructor(firstName,lastName,address,state,city,zipCode,email,phoneNumber){
+        this.firstname=firstName
+        this.lastname=lastName
         this.address=address
         this.state=state
         this.city=city
-        this.zipcode=zipcode
+        this.zipcode=zipCode
         this.email=email
-        this.phonenumber=phonenumber
+        this.phonenumber=phoneNumber
     }   
 }
 /*Validating Regex pattern for Every Attribute in Contact*/
 
-const firstnameRegex =/^[A-Z][A-Z a-z]{3,}$/
-let firstnamecheck = firstnameRegex.test("Nikhil")
+function contactDetails(firstName,lastName,address,state,city,zipCode,email,phoneNumber){
+    const firstNamePattern = /^[A-Z][a-zA-Z]{3,}/;
+    let firstName_Check = firstNamePattern.test(firstName);
 
-const lastnameRegex = /^[A-Z][A-Z a-z]{3,}$/
-let lastnamecheck =lastnameRegex.test("Patil")
+    const lastNamePattern = /^[A-Z][a-zA-Z]{3,}/;
+    let lastName_Check = lastNamePattern.test(lastName);
 
-const addressRegex = /^[A-Z][A-Z a-z][0-9]{3,}$/
-let addresscheck = addressRegex.test("Street111Nagpur")
+    const addressPattern = /^[A-Z][a-zA-Z0-9]{3,}/;
+    let address_Check = addressPattern.test(address);
 
-const stateRegex =/^[A-Z][A-Z a-z]{3,}$/
-let statecheck = stateRegex.test("Maharashtra")
+    const statePattern = /^[A-Z][a-zA-Z]{3,}/;
+    let state_Check = statePattern.test(state);
 
-const cityRegex =/^[A-Z][A-Z a-z]{3,}$/
-let cityCheck =cityRegex.test("Nagpur")
+    const cityPattern = /^[A-Z][a-zA-Z]{3,}/;
+    let city_Check = cityPattern.test(city);
 
-const zipcodeRegex =/^[0-9]{3}[\s][0-9]{3}$/
-let zipcodeCheck =zipcodeRegex.test("444 444")
+    const zipCodePattern = /^[0-9]{3}[\s]{1}[0-9]{3}/;
+    let zipCode_Check = zipCodePattern.test(zipCode) ;
 
-const emailRegex = /^[A-Za-z0-9_-]+([.][A-Za-z0-9_-]+)@[A-Za-z]+[A-Za-z]+([.][A-Za-z]+)$/
-let emailCheck =emailRegex.test("Nikhil@gmail.com")
+    const emailPattern = /^[A-Za-z0-9]+(.[A-Za-z0-9]+)*@[^_\\W]+(.[^_\\W]+)?(?=(.[^_\\W]{3,}$|.[a-zA-Z]{2}$)).*$/;
+    let email_Check = emailPattern.test(email);
 
-const phonenumberRegex =/^[1-9]{2}[\s][1-9]{10}$/
-let phonenumberCheck =phonenumberRegex.test("91 9123456789")
+    const phoneNumberPattern = /^[0-9]{2}[\s]{1}[0-9]{10}/;
+    let phoneNumber_Check = phoneNumberPattern.test(phoneNumber);
 
-/*Checking condition if Entered Details are Valid or not */
-
-if(firstnamecheck==true && lastnamecheck==true && addresscheck==true && statecheck==true && cityCheck==true && zipcodeCheck==true && emailCheck==true && phonenumberCheck==true){
-
-    console.log("Entered Contact Details are Valid")
-    
-    newContact = new Contact(firstname,lastname,address,state,city,zipcode,email,phonenumber)/*adding new Contact*/    
+        if(firstName_Check == true && lastName_Check == true && address_Check == true && state_Check == true && city_Check == true
+            && zipCode_Check == true && email_Check == true && phoneNumber_Check == true){
+            let newCotact = new Contact(firstName,lastName,address,state,city,zipCode,email,phoneNumber);
+            console.log("Contact Added Successfully");
+            console.log(newCotact);
+        }else{
+            throw 'Contact Details Are Invalid';
+        }
 }
-else{
-    throw "Invalid Contact Details Please Input Valid Details" 
+
+contactDetails("Nikhil","Patil","Nagpur","Maharashtra","Nagpur","444444","nikhil@gmail.com","91 1234567890");
+
+/*Displaying Contact In Address Book*/
+for(let i = 0 ; i < addressBook.length ; i++){
+    console.log(addressBook[i]);
 }
-// console.log("Welcome to Addressbook System\n")
-// console.log("Adding Contact -")
-// console.log(newContact)
-// console.log("Contact Added")
