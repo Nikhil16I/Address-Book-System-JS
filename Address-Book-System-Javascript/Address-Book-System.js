@@ -129,6 +129,20 @@ function viewByCityOrState(choice , name){
         console.log("Provide Right City or State Name");
     }
 }
+function countContactInCity_State(choice , name){
+    if(choice == "city"){
+        person = addressBook.filter(contact => contact.city == name)
+        .reduce(() => { count++;},count = 0);
+        console.log("Total Number Of Contact Found Who Is From "+name+" Are " +count);
+    }else if(choice == "state"){
+        person = addressBook.filter(contact => contact.state == name)
+        .reduce(() => { count++;},count = 0);
+        console.log("Total Number Of Contact Found Who Is From "+name+" Are " +count);
+    }else{
+        console.log("Provide Right City or State Name");
+    }
+}
+
     function deleteContact(first_Name) {
         if (addressBook.length == null) {
             console.log("Contact Added In Address Book");
@@ -183,3 +197,5 @@ function viewByCityOrState(choice , name){
     selectFunction("countContact");
     selectFunction("searchByCity_State");
     selectFunction("viewByCityOrState");
+    selectFunction("countContactInCity_State");
+
